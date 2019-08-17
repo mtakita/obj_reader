@@ -1,6 +1,7 @@
 
 VPATH = ./ ../include
 
+YFLAGS = --debug
 CPPFLAGS = -g -I ../include 
 SOURCES = main.c obj_reader_func.c obj_reader_flex.c obj_reader_bison.tab.c obj_reader_flex.c
 
@@ -10,10 +11,10 @@ SOURCES = main.c obj_reader_func.c obj_reader_flex.c obj_reader_bison.tab.c obj_
 
 
 obj_reader: $(subst .c,.o,$(SOURCES))
-	$(CC) -g -o $@ $^
+	$(CC) -D DEBUG -g -o $@ $^
 
 obj_reader_bison.tab.h: obj_reader_bison.y
-	bison -d $< 
+	bison $(YFLAGS) -d $< 
 
 main.o: main.c obj_reader.h
 obj_reader_func.o: obj_reader_func.c obj_reader.h

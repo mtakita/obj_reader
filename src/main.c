@@ -3,13 +3,11 @@
 #include <stdarg.h>
 #include "obj_reader.h"
 
-void yyerror(char *s, ...){
-	va_list ap;
-	va_start(ap, s);
+int main( int argc, char* argv[] ){
+//int readObj( int argc, char* argv[] ){
 
-	fprintf(stderr, "%d: error: ", yylineno );
-	vfprintf(stderr, s, ap );
-	fprintf(stderr, "\n");
+        startParse( "log.obj" );
+        return 0;
 }
 
 /*
@@ -40,7 +38,7 @@ int startParse( const char* fileName ){
 
 int main( int argc, char* argv[] ){
 
-	startParse( "file.obj" );
+	startParse( "untitled.obj" );
 	return 0;
 }
 
